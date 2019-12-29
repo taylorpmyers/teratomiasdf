@@ -31,7 +31,7 @@ export const BlogPostTemplate = ({
                 <h4>Tags</h4>
                 <ul className="taglist">
                   {tags.map(tag => (
-                    {tag}
+                    tag
                   ))}
                 </ul>
               </div>

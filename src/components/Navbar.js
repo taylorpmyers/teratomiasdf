@@ -3,8 +3,7 @@
   import patreon from '../img/patreon-icon.png'
   import twitter from '../img/twitter-icon.png'
   import amazon from '../img/amazon-icon.png'
-
-
+  import teratomi from '../img/teratomi-icon.png'
 
   function Navbar({ siteTitle }) {
 
@@ -13,8 +12,8 @@
       <nav className="flex items-center justify-center flex-wrap bg-purple-500">
         <div className = "flex flex-wrap w-full md:max-w-4xl md:justify-between">
         <div className="flex items-center flex-shrink-0 text-white">
-          <svg className="fill-current h-8 w-8 ml-2 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" /></svg>
-          <span className="font-semibold text-xl tracking-tight"><Link to="/">Teratomi</Link></span>
+        <img className="fill-current h-8 w-8 mt-4 ml-2 mr-2" alt="teratomi logo" src={teratomi}></img>
+          <span className="font-semibold text-xl tracking-widest"><Link to="/">Teratomi</Link></span>
         </div>
         <div className="ml-auto block md:hidden">
           <button onClick={() => toggleExpansion(!isExpanded)} className="flex items-center px-3 py-2 border rounded text-purple-200 border-purple-400 hover:text-white hover:border-white">

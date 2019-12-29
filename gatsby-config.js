@@ -34,6 +34,7 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
+        "excerpt_separator": `<!-- end -->`,
         plugins: [
           {
             resolve: 'gatsby-remark-relative-images',
@@ -47,18 +48,17 @@ module.exports = {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 2048,
-              quality: 100,
+              maxWidth: 1280,
             },
           },
           {
             resolve: 'gatsby-remark-copy-linked-files',
             options: {
               destinationDir: 'static',
-            },
-          },
-        ],
-      },
+            }
+          }
+        ]
+      }
     },
     {
       resolve: 'gatsby-plugin-netlify-cms',
@@ -80,5 +80,36 @@ module.exports = {
         postCssPlugins: [require("tailwindcss")]
       }
     },
+    {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: "./src/img/teratomi-icon.png",
+   
+        // WebApp Manifest Configuration
+        appName: null, // Inferred with your package.json
+        appDescription: null,
+        developerName: null,
+        developerURL: null,
+        dir: 'auto',
+        lang: 'en-US',
+        background: '#fff',
+        theme_color: '#fff',
+        display: 'standalone',
+        orientation: 'any',
+        start_url: '/?homescreen=1',
+        version: '1.0',
+   
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          yandex: false,
+          windows: false
+        }
+      }
+    }
   ],
 }

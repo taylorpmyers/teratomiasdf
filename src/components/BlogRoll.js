@@ -7,12 +7,13 @@ class BlogRoll extends React.Component {
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
-    console.log(posts)
+    const shortenText = (text, lng) => { return text.length < lng ? text : text.slice(0, lng).concat("...") }
+    console.log(data)
     return (
       <div>
         {posts &&
           posts.map(({ node: post }) => (
-            <div key={post.id} class="max-w-sm rounded overflow-hidden shadow-2xl">
+            <div key={post.id} className="max-w-xs rounded overflow-hidden shadow-2xl">
               {post.frontmatter.featuredimage ? (
                 <PreviewCompatibleImage
                   imageInfo={{
@@ -21,30 +22,28 @@ class BlogRoll extends React.Component {
                   }}
                 />
               ) : null}
-              <div class="px-6 py-4">
-                <p>
+              <div className="px-6 py-4">
+                <p className="m-0">
                   <Link
-                    className="title has-text-primary text-lg"
+                    className="font-semibold text-purple-400 text-lg"
                     to={post.fields.slug}
                   >
-                    {post.frontmatter.title}
+                    {shortenText(post.frontmatter.title, 25)}
                   </Link>
-                  <span> &bull; </span>
-                </p>
-                <p className="text-sm">
-                  {post.excerpt}
-                  <br />
-                  <span className="flex justify-between">
-                  <Link className="button bg-purple-400 rounded-full px-3 py-1 text-lg font-semibold text-white" to={post.fields.slug}>
-                    Keep Reading →
-                  </Link>
-                  <span className="subtitle text-md is-block text-right">
+                  <span className="block subtitle italic text-blue-800">
                     {post.frontmatter.date}
                   </span>
-                </span>
+                  <span className="text-sm p-0 mt-0">
+                    {shortenText(post.excerpt, 80)}
+                  </span>
                 </p>
-                <span class="inline-block bg-red-800 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2">#vampire</span>
-                <span class="inline-block bg-black rounded-full px-3 py-1 text-sm font-semibold text-white">#bdsm</span>
+                <div className="my-1 text-right">
+                  <Link className="text-purple-400 rounded-full px-3 py-1 text-lg font-semibold" to={post.fields.slug}>
+                    Keep Reading →
+                  </Link>
+                </div>
+                <span style = {{padding: ".05rem .75rem"}} className="inline-block bg-red-800 rounded-full text-xs font-semibold text-white mr-2">#vampire</span>
+                <span style = {{padding: ".05rem .75rem"}} className="inline-block bg-black rounded-full text-xs font-semibold text-white">#bdsm</span>
               </div>
             </div>
           ))}
@@ -61,7 +60,7 @@ BlogRoll.propTypes = {
   }),
 }
 
-export default () => (
+export default arg => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {

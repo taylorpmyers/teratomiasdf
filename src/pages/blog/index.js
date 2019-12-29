@@ -7,7 +7,7 @@ export default class BlogIndexPage extends React.Component {
     return (
       <Layout>
         <section className="section">
-          <BlogRoll />
+          <BlogRoll arg = {2}/>
         </section>
       </Layout>
     )

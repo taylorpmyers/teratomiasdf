@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../../components/Layout'
-import BlogRoll from '../../components/BlogRoll'
+import BookRoll from '../../components/BookRoll'
 
 export default class BookIndexPage extends React.Component {
   render() {
@@ -27,7 +27,7 @@ export default class BookIndexPage extends React.Component {
         <section className="section">
           <div className="container">
             <div className="content">
-              <BlogRoll />
+              <BookRoll />
             </div>
           </div>
         </section>

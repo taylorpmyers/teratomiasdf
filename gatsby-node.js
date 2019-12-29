@@ -2,6 +2,7 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const blogPost = path.resolve(`./src/templates/blog-post.js`)
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
@@ -30,19 +31,28 @@ exports.createPages = ({ actions, graphql }) => {
 
     const posts = result.data.allMarkdownRemark.edges
 
-    posts.forEach(edge => {
+    posts.forEach((post) => {
+      // paging will not work as is, throws a build error  
+      /* const previous = index === posts.length - 1 ? null : posts[index + 1].node
+      const next = index === 0 ? null : posts[index - 1].node */
+      const id = post.node.id
       createPage({
-        path: edge.node.fields.slug,
-        // tags: edge.node.frontmatter.tags,
+        //path: post.node.frontmatter.path,
+         // changed to this as the first item path key  processed would throw a empty string  
+        path: post.node.frontmatter.path===""?`/posts/${post.node.fields.slug}`: post.node.fields.slug,
         component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+          `src/templates/${String(post.node.frontmatter.templateKey)}.js`
         ),
-        // additional data can be passed via context
         context: {
-          id:edge.node.id
-        }
+          slug: post.node.fields.slug,
+          id,
+        },
       })
     })
+
+    return null
+  })
+}
 
     // // Tag pages:
     // let tags = []
@@ -67,8 +77,6 @@ exports.createPages = ({ actions, graphql }) => {
     //     },
     //   })
     // })
-  })
-}
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
