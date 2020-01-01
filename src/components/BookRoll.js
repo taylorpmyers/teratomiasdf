@@ -14,7 +14,7 @@ class BookRoll extends React.Component {
       <div>
         {posts &&
           posts.map(({ node: post }) => (
-            <div key={post.id} className="m-5 bg-white rounded inline-block shadow-2xl">
+            <div key={post.id} style = {{backgroundColor: "#080d11"}}className="m-5 rounded inline-block shadow-2xl">
               <div className="max-w-sm flex">
                 <div className="w-24 h-auto md:w-24 flex-none text-center overflow-hidden" >
                   {post.frontmatter.featuredimage ? (

@@ -3,24 +3,27 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import CatPic from '../img/cat.jpg'
+import amazon from '../img/amazonButton.png'
+import smashwords from '../img/smashwordsButton.png'
 
-export const AboutPageTemplate = ({ title, content, contentComponent }) => {
+
+export const AboutPageTemplate = ({ content, contentComponent }) => {
   const PageContent = contentComponent || Content
-
   return (
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <PageContent className="content" content={content} />
-            </div>
-          </div>
-        </div>
+    <section>
+      <h3 className = "text-center font-serif text-pink-500 mt-20">About</h3>
+      <h1 style = {{textDecorationColor: "#ED64A6"}}className = "text-center font-serif underline">Naomi Spicer</h1>
+      <div className = "md:flex flex-row mt-12">
+        <img alt="cartoon cat in a T-shirt" className="rounded-full mx-auto md:mx-4 md:w-56" src={CatPic}></img>
+        <PageContent className="content mx-6" content={content} />
       </div>
+      <div className = "flex flex-wrap justify-around">
+        <img className = "w-full sm:w-1/2 max-w-xs" alt = "link to amazon store" src = {amazon}/>
+        <img className = "w-full sm:w-1/2 max-w-xs" alt = "link to smashwords store" src = {smashwords} />
+        <img className = "w-full sm:w-1/2 max-w-xs" alt = "link to amazon store" src = {amazon}/>
+        <img className = "w-full sm:w-1/2 max-w-xs" alt = "link to smashwords store" src = {smashwords} />
+        </div>      
     </section>
   )
 }

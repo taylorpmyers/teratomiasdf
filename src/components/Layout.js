@@ -17,7 +17,7 @@ const Layout = props => {
   `)
 
   return (
-    <div style={{ backgroundColor: "#171a1e" }} className="flex flex-col min-h-screen">
+    <div style={{ backgroundColor: "#171a1e" }} className="text-white flex flex-col min-h-screen">
       <div  className="flex-grow max-w-full">
         <Navbar />
         {props.hero}
