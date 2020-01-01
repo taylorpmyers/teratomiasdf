@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import Content from '../components/Content'
 import BookRoll from '../components/BookRoll'
 import Hero from '../components/Hero'
 export const IndexPageTemplate = ({ title, content, contentComponent }) => {
@@ -25,15 +25,10 @@ IndexPageTemplate.propTypes = {
 }
 
 const IndexPage = ({ data }) => {
-const { markdownRemark: post } = data
+
 
   return (
     <Layout hero = {<Hero />}>
-      {/* <IndexPageTemplate
-        contentComponent={HTMLContent}
-        title={post.frontmatter.title}
-        content={post.html}
-      /> */}
       <BookRoll />
     </Layout>
   )
