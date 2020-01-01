@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 import Content from '../components/Content'
 import BookRoll from '../components/BookRoll'
 import Hero from '../components/Hero'
+
 export const IndexPageTemplate = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content
 
