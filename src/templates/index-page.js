@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
-
+import BookRoll from '../components/BookRoll'
+import Hero from '../components/Hero'
 export const IndexPageTemplate = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content
 
@@ -24,15 +25,16 @@ IndexPageTemplate.propTypes = {
 }
 
 const IndexPage = ({ data }) => {
-  const { markdownRemark: post } = data
+const { markdownRemark: post } = data
 
   return (
-    <Layout>
-      <IndexPageTemplate
+    <Layout hero = {<Hero />}>
+      {/* <IndexPageTemplate
         contentComponent={HTMLContent}
         title={post.frontmatter.title}
         content={post.html}
-      />
+      /> */}
+      <BookRoll />
     </Layout>
   )
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
+import amazon from '../img/amazonButton.png'
+import smashwords from '../img/smashwordsButton.png'
 
 class BookRoll extends React.Component {
   render() {
@@ -12,9 +14,9 @@ class BookRoll extends React.Component {
       <div>
         {posts &&
           posts.map(({ node: post }) => (
-            <div key={post.id} className = "border border-gray-400 bg-white rounded inline-block">
-              <div  className="max-w-sm flex">
-                <div className="w-24 h-auto md:w-40 flex-none text-center overflow-hidden" >
+            <div key={post.id} className="m-5 bg-white rounded inline-block shadow-2xl">
+              <div className="max-w-sm flex">
+                <div className="w-24 h-auto md:w-24 flex-none text-center overflow-hidden" >
                   {post.frontmatter.featuredimage ? (
                     <PreviewCompatibleImage
                       imageInfo={{
@@ -24,28 +26,21 @@ class BookRoll extends React.Component {
                     />
                   ) : null}
                 </div>
-                <div className="p-4 justify-between leading-normal">
-                  <div className="">
-                    <p className="text-sm text-gray-600 mb-0 flex items-center">{post.frontmatter.date}</p>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">
-                      Kindle
-                    </button>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">
-                      Smashwords
-                    </button>
-                    
-                    {/* <p className="text-gray-700 text-base">{shortenText(post.excerpt, 80)}</p> */}
-                    <Link className="text-purple-400 rounded-full px-3 py-1 text-lg font-semibold" to={post.fields.slug}>
-                      More Info →
-                        </Link>
-                  </div>
+                <div className="ml-2 mr-2 flex-wrap leading-normal">
+                  <Link className="font-semibold text-lg" to={post.fields.slug}>
+                    {shortenText(post.frontmatter.title, 25)}
+                  </Link>
+                  <p className="text-sm text-gray-600 mb-0 items-center">{post.frontmatter.date}</p>
+                  <a className="inline-block m-0" href="https://www.amazon.com/"><img className = "m-0 md:mb-2 md:mt-2" alt="amazon logo" src={amazon} width="200" height="auto"></img></a>
+                  <a className="inline-block mt-0" href="https://www.smashwords.com/"><img className = "m-0" alt="smashwords logo" src={smashwords} width="200" height="auto"></img></a>
                 </div>
               </div>
-              <div className="bg-pink-500 text-white font-bold text-xl p-1 rounded-b">
-                      <Link className="font-semibold text-white text-lg" to={post.fields.slug}>
-                        {shortenText(post.frontmatter.title, 25)}
-                      </Link>
-                    </div>
+              <div className="max-w-sm ml-2 mr-2 ">
+                <p className="text-gray-700 text-base mb-0 ">{shortenText(post.excerpt, 95)} <br></br><Link className="text-purple-400 rounded-full px-3 py-1 text-lg font-semibold" to={post.fields.slug}> More Info →</Link></p>
+              </div>
+              <span style = {{padding: ".05rem .75rem"}} className="inline-block bg-red-800 rounded-full text-xs font-semibold text-white m-2">#vampire</span>
+                <span style = {{padding: ".05rem .75rem"}} className="inline-block bg-black rounded-full text-xs font-semibold text-white">#bdsm</span>
+                <span style = {{padding: ".05rem .75rem"}} className="inline-block bg-red-800 rounded-full text-xs font-semibold text-white m-2">#vampire</span>
             </div>
           ))}
       </div>

@@ -13,7 +13,7 @@ class BlogRoll extends React.Component {
       <div>
         {posts &&
           posts.map(({ node: post }) => (
-            <div key={post.id} className="max-w-xs rounded overflow-hidden shadow-2xl">
+            <div key={post.id} className="max-w-xs m-5 rounded overflow-hidden shadow-2xl" style = {{backgroundColor: "#080d11"}}>
               {post.frontmatter.featuredimage ? (
                 <PreviewCompatibleImage
                   imageInfo={{
@@ -43,7 +43,8 @@ class BlogRoll extends React.Component {
                   </Link>
                 </div>
                 <span style = {{padding: ".05rem .75rem"}} className="inline-block bg-red-800 rounded-full text-xs font-semibold text-white mr-2">#vampire</span>
-                <span style = {{padding: ".05rem .75rem"}} className="inline-block bg-black rounded-full text-xs font-semibold text-white">#bdsm</span>
+                <span style = {{padding: ".05rem .75rem"}} className="inline-block bg-black rounded-full text-xs font-semibold text-white mr-2">#bdsm</span>
+                <span style = {{padding: ".05rem .75rem"}} className="inline-block bg-red-800 rounded-full text-xs font-semibold text-white mr-2">#vampire</span>
               </div>
             </div>
           ))}
