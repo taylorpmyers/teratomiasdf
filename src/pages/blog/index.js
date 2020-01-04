@@ -1,15 +1,15 @@
 import React from 'react'
-import Layout from '../../components/Layout'
+import MyLayout from '../../components/MyLayout'
 import BlogRoll from '../../components/BlogRoll'
 
 export default class BlogIndexPage extends React.Component {
   render() {
     return (
-      <Layout>
+      <MyLayout>
         <section className="section">
           <BlogRoll isResponsive={true}/>
         </section>
-      </Layout>
+      </MyLayout>
     )
   }
 }

@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import Navbar from "./Navbar.js"
 import NewPosts from './NewPosts'
 import JoinEmail from './JoinEmail'
-const Layout = props => {
+const MyLayout = props => {
 
   return (
     <div style={{ backgroundColor: "#171a1e" }} className="text-white flex flex-col min-h-screen">
@@ -26,8 +26,8 @@ const Layout = props => {
 }
 
 
-Layout.propTypes = {
+MyLayout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+export default MyLayout

@@ -1,15 +1,15 @@
 import React from 'react'
-import Layout from '../../components/Layout'
+import MyLayout from '../../components/MyLayout'
 import BookRoll from '../../components/BookRoll'
 
 export default class BookIndexPage extends React.Component {
   render() {
     return (
-      <Layout>
+      <MyLayout>
         <section className="section">
           <BookRoll isResponsive={true}/>
         </section>
-      </Layout>
+      </MyLayout>
     )
   }
 }

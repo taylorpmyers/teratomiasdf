@@ -1,14 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import Layout from "../components/layout"
+import MyLayout from "../components/MyLayout"
 import './postStyle.module.css'
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     return (
-      <Layout>
+      <MyLayout>
         <div className=" mx-8 mb-10">
           <h1 style={{ textDecorationColor: "#B83280" }} className="font-serif underline">{post.frontmatter.title}</h1>
           <h4 className=" font-serif text-teal-600">{post.frontmatter.date}</h4>
@@ -26,7 +26,7 @@ class BlogPostTemplate extends React.Component {
           </div>
         </div>
 
-      </Layout>
+      </MyLayout>
     )
   }
 }

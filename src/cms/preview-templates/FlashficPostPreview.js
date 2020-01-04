@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FlashficPostTemplate } from '../../templates/flashfic-post'
+import FlashficPostTemplate from '../../templates/flashfic-post'
 
 const FlashficPostPreview = ({ entry, widgetFor }) => (
   <FlashficPostTemplate

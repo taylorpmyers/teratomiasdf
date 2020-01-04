@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import MyLayout from '../components/MyLayout'
 import Content, { HTMLContent } from '../components/Content'
 import CatPic from '../img/cat.jpg'
 import amazon from '../img/amazonProfileButton.png'
@@ -40,13 +40,13 @@ const AboutPage = ({ data }) => {
   const { markdownRemark: post } = data
 
   return (
-    <Layout>
+    <MyLayout>
       <AboutPageTemplate
         contentComponent={HTMLContent}
         title={post.frontmatter.title}
         content={post.html}
       />
-    </Layout>
+    </MyLayout>
   )
 }
 

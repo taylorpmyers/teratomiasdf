@@ -1,14 +1,13 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import Layout from "../components/layout"
+import Layout from "../components/MyLayout"
 import AmazonButton from '../img/amazonButton.png'
 import SmashwordsButton from '../img/smashwordsButton.png'
 // cover,title, author, pages, date, series,smashwords,amazon, tags
 class BookPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    console.log(post)
     return (
       <Layout >
         <div className=" mx-8 mb-10 max-w-2xl">

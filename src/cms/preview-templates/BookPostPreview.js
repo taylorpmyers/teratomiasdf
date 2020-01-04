@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BookPostTemplate } from '../../templates/book-post'
+import BookPostTemplate from '../../templates/book-post'
 
 const BookPostPreview = ({ entry, widgetFor }) => (
   <BookPostTemplate
