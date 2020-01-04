@@ -11,7 +11,6 @@ class BookRoll extends React.Component {
     let { edges: posts } = data.allMarkdownRemark
     const shortenText = (text, lng) => { return text.length < lng ? text : text.slice(0, lng).concat("...") }
     const isResponsive = style => {return this.props.isResponsive ? style : ""}
-    console.log(this.props)
     if (this.props.num && this.props.num < posts.length) {
       let temp = posts.slice(0, this.props.num)
       posts = temp
