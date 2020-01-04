@@ -7,7 +7,7 @@ export default class BlogIndexPage extends React.Component {
     return (
       <Layout>
         <section className="section">
-          <BlogRoll arg = {2}/>
+          <BlogRoll isResponsive={true}/>
         </section>
       </Layout>
     )

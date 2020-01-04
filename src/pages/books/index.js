@@ -7,8 +7,7 @@ export default class BookIndexPage extends React.Component {
     return (
       <Layout>
         <section className="section">
-              <BookRoll />
-      
+          <BookRoll isResponsive={true}/>
         </section>
       </Layout>
     )

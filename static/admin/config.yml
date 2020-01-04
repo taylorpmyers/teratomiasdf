@@ -32,12 +32,14 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "book-post"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "text"}
       - {label: "Featured Image", name: "featuredimage", widget: image}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Pages", name: "pages", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
       - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Amazon Link", name: "amazonlink", widget: "string"}
+      - {label: "Smashwords Link", name: "smashwordslink", widget: "string"}
   - name: "flashfic"
     label: "Flashfic"
     folder: "src/pages/flashfic"
@@ -54,12 +56,6 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "src/pages/index.md"
-        label: "Landing Page"
-        name: "index"
-        fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
-          - {label: "Body", name: "body", widget: "markdown"}
       - file: "src/pages/about/index.md"
         label: "About"
         name: "about"

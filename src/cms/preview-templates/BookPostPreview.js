@@ -9,6 +9,9 @@ const BookPostPreview = ({ entry, widgetFor }) => (
     tags={entry.getIn(['data', 'tags'])}
     title={entry.getIn(['data', 'title'])}
     featuredimage={entry.getIn(['data', 'featuredimage'])}
+    pages={entry.getIn(['data','pages'])}
+    amazonlink={entry.getIn(['data','amazonlink'])}
+    smashwordslink={entry.getIn(['data','smashwordslink'])}
   />
 )
 

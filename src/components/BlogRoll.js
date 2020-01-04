@@ -6,49 +6,49 @@ import PreviewCompatibleImage from './PreviewCompatibleImage'
 class BlogRoll extends React.Component {
   render() {
     const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+    let { edges: posts } = data.allMarkdownRemark
     const shortenText = (text, lng) => { return text.length < lng ? text : text.slice(0, lng).concat("...") }
-    console.log(data)
+    const isResponsive = style => {return this.props.isResponsive ? style : ""} 
+    if(this.props.num && this.props.num < posts.length){
+      let temp = posts.slice(0,this.props.num)
+      posts = temp
+    }
     return (
-      <div>
+      <div className="flex flex-wrap">
         {posts &&
           posts.map(({ node: post }) => (
-            <div key={post.id} className="max-w-xs m-5 rounded overflow-hidden shadow-2xl" style = {{backgroundColor: "#080d11"}}>
-              {post.frontmatter.featuredimage ? (
-                <PreviewCompatibleImage
-                  imageInfo={{
-                    image: post.frontmatter.featuredimage,
-                    alt: `featured image thumbnail for post ${post.frontmatter.title}`,
-                  }}
-                />
-              ) : null}
-              <div className="px-6 py-4">
-                <p className="m-0">
-                  <Link
-                    className="font-semibold text-purple-400 text-lg"
-                    to={post.fields.slug}
-                  >
-                    {shortenText(post.frontmatter.title, 25)}
-                  </Link>
-                  <span className="block subtitle italic text-blue-800">
-                    {post.frontmatter.date}
-                  </span>
-                  <span className="text-sm p-0 mt-0">
-                    {shortenText(post.excerpt, 80)}
-                  </span>
-                </p>
-                <div className="my-1 text-right">
-                  <Link className="text-purple-400 rounded-full px-3 py-1 text-lg font-semibold" to={post.fields.slug}>
-                    Keep Reading →
-                  </Link>
+            <div key={post.id} className="m-5 rounded inline-block w-full max-w-2xl">
+              <div className="w-md flex">
+                <Link to={post.fields.slug} className={`w-32 h-auto  flex-none rounded-none overflow-hidden ${isResponsive("sm:w-48 md:w-64")}`} >
+                  {post.frontmatter.featuredimage ? (
+                    <PreviewCompatibleImage
+                      imageInfo={{
+                        image: post.frontmatter.featuredimage,
+                        alt: `featured image thumbnail for post ${post.frontmatter.title}`,
+                      }}
+                    />
+                  ) : null}
+                </Link>
+                <div className="ml-2 w-full flex-wrap leading-tight border-t-2 border-b-2 border-teal-600 h-full">
+                  <div className="ml-2 mt-1 w-md">
+                    <p className="text-sm text-white mb-0">Blogs / {post.frontmatter.date}</p>
+                    <Link className={`text-xl w-auto mb-0 text-pink-700 inline-block ${isResponsive("sm: text-2xl md:text-3xl")}`} to={post.fields.slug}>
+                      {shortenText(post.frontmatter.title, 30)}
+                    </Link>
+                    <div >
+                      <p className={`hidden text-white text-sm my-0 ${isResponsive("sm:inline-block md:text-base")}`}>{shortenText(post.excerpt, 155)}</p>
+                      {post.frontmatter.tags.map(tag => (
+                        <span className={`inline-block text-lg text-teal-600 ${isResponsive("sm:text-pink-700")}`}>{`#${tag}`}&nbsp;</span>
+                      ))}
+                    </div>
+
+                  </div>
                 </div>
-                <span style = {{padding: ".05rem .75rem"}} className="inline-block bg-red-800 rounded-full text-xs font-semibold text-white mr-2">#vampire</span>
-                <span style = {{padding: ".05rem .75rem"}} className="inline-block bg-black rounded-full text-xs font-semibold text-white mr-2">#bdsm</span>
-                <span style = {{padding: ".05rem .75rem"}} className="inline-block bg-red-800 rounded-full text-xs font-semibold text-white mr-2">#vampire</span>
               </div>
             </div>
           ))}
       </div>
+      
     )
   }
 }
@@ -61,7 +61,7 @@ BlogRoll.propTypes = {
   }),
 }
 
-export default arg => (
+export default props => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {
@@ -80,10 +80,10 @@ export default arg => (
                 title
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
-
+                tags
                 featuredimage {
                   childImageSharp {
-                    fluid(maxWidth: 1000, maxHeight: 400, quality: 100) {
+                    fluid(maxWidth: 750, maxHeight: 500, quality: 100) {
                       ...GatsbyImageSharpFluid
                     }
                   }
@@ -94,6 +94,6 @@ export default arg => (
         }
       }
     `}
-    render={(data, count) => <BlogRoll data={data} count={count} />}
+    render={(data, count) => <BlogRoll data={data} count={count} num={props.num} isResponsive={props.isResponsive} />}
   />
 )

@@ -2,21 +2,30 @@ import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
+import './postStyle.module.css'
 
 class FlashficPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     return (
       <Layout location={this.props.location} >
-        <h1>{post.frontmatter.title}</h1>
-        <h6>{post.frontmatter.date}</h6>
-        <Img
-          className="flex max-w-2xl mx-auto"
-          fluid={post.frontmatter.featuredimage.childImageSharp.fluid}
-        />
-        <div
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
+        <div className=" mx-8 mb-10">
+          <h1 style={{ textDecorationColor: "#B83280" }} className="font-serif underline">{post.frontmatter.title}</h1>
+          <h4 className=" font-serif text-teal-600">{post.frontmatter.date}</h4>
+          <Img
+            className="flex max-w-3xl mx-auto"
+            fluid={post.frontmatter.featuredimage.childImageSharp.fluid}
+          />
+          <div className="netlifyContent"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+          <div className="mt-10">
+            {post.frontmatter.tags.map(tag => (
+              <span className="inline-block text-lg text-teal-600">{`#${tag}`}&nbsp;</span>
+            ))}
+          </div>
+        </div>
+
       </Layout>
     )
   }
@@ -33,6 +42,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD,YYYY")
+        tags
         featuredimage {
           childImageSharp {
             fluid(maxWidth: 756) {

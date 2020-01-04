@@ -4,25 +4,27 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 import CatPic from '../img/cat.jpg'
-import amazon from '../img/amazonButton.png'
-import smashwords from '../img/smashwordsButton.png'
+import amazon from '../img/amazonProfileButton.png'
+import smashwords from '../img/smashwordsProfileButton.png'
+import twitter from '../img/twitterButton.png'
+import patreon from '../img/patreonButton.png'
 
 
 export const AboutPageTemplate = ({ content, contentComponent }) => {
   const PageContent = contentComponent || Content
   return (
-    <section>
-      <h3 className = "text-center font-serif text-pink-500 mt-20">About</h3>
-      <h1 style = {{textDecorationColor: "#ED64A6"}}className = "text-center font-serif underline">Naomi Spicer</h1>
-      <div className = "md:flex flex-row mt-12">
-        <img alt="cartoon cat in a T-shirt" className="rounded-full mx-auto md:mx-4 md:w-56" src={CatPic}></img>
-        <PageContent className="content mx-6" content={content} />
+    <section className = "max-w-4xl mx-auto">
+      <h3 className = "text-center text-4xl font-serif text-pink-700 mt-20">About</h3>
+      <h1 style = {{textDecorationColor: "#B83280"}}className = "text-center text-6xl font-serif underline">Naomi Spicer</h1>
+      <div className = "md:flex flex-row mt-4">
+        <img alt="cartoon cat in a T-shirt" className="rounded-full w-40 h-40 mx-auto md:m-4" src={CatPic}></img>
+        <PageContent className="content mx-6 md:mt-8" content={content} />
       </div>
-      <div className = "flex flex-wrap justify-around">
-        <img className = "w-full sm:w-1/2 max-w-xs" alt = "link to amazon store" src = {amazon}/>
-        <img className = "w-full sm:w-1/2 max-w-xs" alt = "link to smashwords store" src = {smashwords} />
-        <img className = "w-full sm:w-1/2 max-w-xs" alt = "link to amazon store" src = {amazon}/>
-        <img className = "w-full sm:w-1/2 max-w-xs" alt = "link to smashwords store" src = {smashwords} />
+      <div className = "flex flex-wrap justify-around mt-6">
+        <img className = "w-full sm:w-1/2 max-w-xs mt-2" alt = "link to amazon store" src = {amazon}/>
+        <img className = "w-full sm:w-1/2 max-w-xs mt-2" alt = "link to smashwords store" src = {smashwords} />
+        <img className = "w-full sm:w-1/2 max-w-xs mt-2" alt = "link to twitter profile" src = {twitter}/>
+        <img className = "w-full sm:w-1/2 max-w-xs mt-2" alt = "link to patreon" src = {patreon} />
         </div>      
     </section>
   )

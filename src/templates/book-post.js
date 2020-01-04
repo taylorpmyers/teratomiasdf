@@ -1,22 +1,39 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
-
+import AmazonButton from '../img/amazonButton.png'
+import SmashwordsButton from '../img/smashwordsButton.png'
+// cover,title, author, pages, date, series,smashwords,amazon, tags
 class BookPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
+    console.log(post)
     return (
-      <Layout location={this.props.location} >
-        <h1>{post.frontmatter.title}</h1>
-        <h6>{post.frontmatter.date}</h6>
-        <Img
-          className="flex max-w-2xl mx-auto"
-          fluid={post.frontmatter.featuredimage.childImageSharp.fluid}
-        />
-        <div
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
+      <Layout >
+        <div className=" mx-8 mb-10 max-w-2xl">
+          <h1 style={{ textDecorationColor: "#B83280" }} className="font-serif underline">{post.frontmatter.title}</h1>
+          <h4 className=" font-serif text-teal-600">{post.frontmatter.date}</h4>
+          <p>Pages: {post.frontmatter.pages}</p>
+          <Img
+            className="flex max-w-sm mx-auto"
+            fluid={post.frontmatter.featuredimage.childImageSharp.fluid}
+          />
+          <p className = "mt-10">{post.frontmatter.description}</p>
+          <div>
+            <a href={post.frontmatter.amazonlink}><img alt="asdf" className = "mb-5 max-w-xs" src={AmazonButton} /></a>
+            <a href={post.frontmatter.smashwordslink}><img alt="asdf" className = "mb-5 max-w-xs" src={SmashwordsButton} /></a>
+          </div>
+          <div className="mt-10">
+            {post.frontmatter.tags.map(tag => (
+              <span className="inline-block text-lg text-teal-600">{`#${tag}`}&nbsp;</span>
+            ))}
+          </div>
+          <div className="netlifyContent"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+
+        </div>
       </Layout>
     )
   }
@@ -29,13 +46,18 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
-      html
+      html  
       frontmatter {
         title
         date(formatString: "MMMM DD,YYYY")
+        tags
+        description
+        pages
+        smashwordslink
+        amazonlink
         featuredimage {
           childImageSharp {
-            fluid(maxWidth: 756) {
+            fluid(maxWidth: 240, maxHeight: 450, quality:100) {
               ...GatsbyImageSharpFluid_noBase64
             }
           }

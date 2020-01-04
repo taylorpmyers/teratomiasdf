@@ -1,0 +1,100 @@
+
+  .modest-no-decoration {
+    text-decoration: none;
+  }
+  
+  html {
+    font-size: 14px;
+  }
+  
+  @media screen and (min-width: 32rem) and (max-width: 48rem) {
+    html {
+      font-size: 15px;
+    }
+  }
+  
+  @media screen and (min-width: 48rem) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  body {
+    line-height: 1.85;
+  }
+  
+  p,
+  .modest-p {
+    font-size: 1rem;
+    margin-bottom: 1.3rem;
+  }
+  
+  h1,
+  .modest-h1,
+  h2,
+  .modest-h2,
+  h3,
+  .modest-h3,
+  h4,
+  .modest-h4 {
+    margin: 1.414rem 0 .5rem;
+    font-weight: inherit;
+    line-height: 1;
+  }
+  
+  h1,
+  .modest-h1 {
+    margin-top: 0;
+    font-size: 3.998rem;
+  }
+  
+  h2,
+  .modest-h2 {
+    font-size: 2.827rem;
+  }
+  
+  h3,
+  .modest-h3 {
+    font-size: 1.999rem;
+  }
+  
+  h4,
+  .modest-h4 {
+    font-size: 1.414rem;
+  }
+  
+  h5,
+  .modest-h5 {
+    font-size: 1.121rem;
+  }
+  
+  h6,
+  .modest-h6 {
+    font-size: .88rem;
+  }
+  
+  small,
+  .modest-small {
+    font-size: .707em;
+  }
+  
+  @import url(https://fonts.googleapis.com/css?family=Comfortaa&display=swap);
+     
+ * {
+    font-family: Comfortaa, Helvetica, sans-serif;
+  }
+    
+  blockquote {
+    border-left: 8px solid #B83280;
+    padding: 1rem;
+  }
+  
+  
+
+  ul {
+    list-style-type: circle;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }

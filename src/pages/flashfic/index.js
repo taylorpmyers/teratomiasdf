@@ -1,13 +1,13 @@
 import React from 'react'
 import Layout from '../../components/Layout'
-import BlogRoll from '../../components/BlogRoll'
+import FlashRoll from '../../components/FlashRoll'
 
 export default class FlashficIndexPage extends React.Component {
   render() {
     return (
       <Layout>
         <section className="section">
-              <BlogRoll />
+              <FlashRoll isResponsive={true} />
         </section>
       </Layout>
     )
